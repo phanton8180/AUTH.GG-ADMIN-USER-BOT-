@@ -1,3 +1,18 @@
+
+import discord
+import requests
+import PyAuthGG
+from discord.ext import commands
+import json
+from AuthGG.client import Client
+import os
+import discord.utils
+import time
+
+
+
+
+
 with open("config.json") as f:
     config = json.load(f)
 token = config.get("token")
