@@ -238,10 +238,9 @@ async def register(ctx, key, name, email, password):
 
 @bot.command()
 @commands.dm_only()
-async def verify(ctx, name, number):
-    result = App.Login(name, number)
-    print(result)
-    if result["result"] == "success":
+async def verify(ctx, key):
+    result = Admin.FetchLicense(key)
+    if result["status"] == "success":
         await ctx.send("Successfully Verified")
         guild = bot.get_guild(server_id)
         role = guild.get_role(verified_role_id)
@@ -254,6 +253,10 @@ async def verify(ctx, name, number):
 @verify.error
 async def verify_error(ctx, error):
     return
+
+
+
+
 
 
 @bot.listen()
